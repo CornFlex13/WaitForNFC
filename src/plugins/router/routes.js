@@ -1,5 +1,5 @@
 export const routes = [
-  { path: '/', redirect: '/dashboard' },
+  { path: '/', redirect: '/home' },
 
   {
     path: '/',
@@ -10,20 +10,12 @@ export const routes = [
         component: () => import('@/pages/tables.vue'),
       },
       {
-        path: 'queue',
-        component: () => import('@/pages/queue.vue'),
-      },
-      {
-        path: 'menu',
-        component: () => import('@/pages/menu.vue'),
+        path: 'student',
+        component: () => import('@/pages/student.vue'),
       },
       {
         path: 'stock',
         component: () => import('@/pages/stock.vue'),
-      },
-      {
-        path: 'income',
-        component: () => import('@/pages/income.vue'),
       },
       {
         path: 'expend',
@@ -42,8 +34,36 @@ export const routes = [
         component: () => import('@/pages/setting.vue'),
       },      
       {
-        path: 'dashboard',
-        component: () => import('@/pages/dashboard.vue'),
+        path: 'home',
+        component: () => import('@/pages/home.vue'),
+      },
+      {
+        path: 'cp422101',
+        component: () => import('@/pages/cp422101.vue'),
+      },
+      {
+        path: 'cp422021',
+        component: () => import('@/pages/cp422021.vue'),
+      },
+      {
+        path: 'attendancecheck',
+        component: () => import('@/pages/attendancecheck.vue'),
+      },
+      {
+        path: 'attendancecheck/:courseid',
+        component: () => import('@/pages/attendancecheck.vue'),
+      },
+      {
+        path: 'home_std',
+        component: () => import('@/pages/home_std.vue'),
+      },
+      {
+        path: 'cp422021std',
+        component: () => import('@/pages/cp422021std.vue'),
+      },
+      {
+        path: 'cp422101std',
+        component: () => import('@/pages/cp422101std.vue'),
       },
             
     ],

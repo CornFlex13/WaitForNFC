@@ -1,13 +1,10 @@
 <script setup>
 import { useTheme } from 'vuetify'
-import AuthProvider from '@/views/pages/authentication/AuthProvider.vue'
-import logo from '@images/logo.svg?raw'
-import authV1MaskDark from '@images/pages/auth-v1-mask-dark.png'
 import authV1MaskLight from '@images/pages/auth-v1-mask-light.png'
-import authV1Tree2 from '@images/pages/auth-v1-tree-2.png'
-import authV1Tree from '@images/pages/auth-v1-tree.png'
-
 import { useAuthStore } from '@/store/auth'
+import 'vuetify/styles'
+
+
 const authStore = useAuthStore()
 const router = useRouter()
 const route = useRoute()
@@ -31,30 +28,30 @@ const isPasswordVisible = ref(false)
 <template>
   <!-- eslint-disable vue/no-v-html -->
 
-  <div class="auth-wrapper d-flex align-center justify-center pa-4">
+  <div class="auth-wrapper d-flex align-center justify-center pa-40">
     <VCard
       class="auth-card pa-4 pt-7"
       max-width="448"
-    >
+      style="background-color: #FFFF; color: #FFFF;">
+    
       <VCardItem class="justify-center">
         <template #prepend>
           <div class="d-flex">
-            <div v-html="logo" />
           </div>
         </template>
 
-        <VCardTitle class="font-weight-semibold text-2xl text-uppercase">
-          Materio
-        </VCardTitle>
+        
+        <v-card-title class="text-center" style="font-size: 29px;">
+          🕵️‍♂️ CYBERCP CHECK 🕵️‍♂️ 
+        </v-card-title>
+
+       
       </VCardItem>
 
-      <VCardText class="pt-2">
+      <VCardText class="pt-1">
         <h5 class="text-h5 font-weight-semibold mb-1">
-          Welcome to Materio! 👋🏻
+          come to class some times,or you’ll grow up wondering where your degree came from 👋🏻
         </h5>
-        <p class="mb-0">
-          Please sign-in to your account and start the adventure
-        </p>
       </VCardText>
 
       <VCardText>
@@ -63,9 +60,10 @@ const isPasswordVisible = ref(false)
             <!-- email -->
             <VCol cols="12">
               <VTextField
-                v-model="form.email"
-                label="Email"
-                type="email"
+                v-model="form.Username"
+                label="📧 Username"
+                type="Username  "
+                
               />
             </VCol>
 
@@ -73,89 +71,44 @@ const isPasswordVisible = ref(false)
             <VCol cols="12">
               <VTextField
                 v-model="form.password"
-                label="Password"
+                label="🔒 Password"
                 placeholder="············"
                 :type="isPasswordVisible ? 'text' : 'password'"
                 :append-inner-icon="isPasswordVisible ? 'ri-eye-off-line' : 'ri-eye-line'"
                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
               />
 
-              <!-- remember me checkbox -->
-              <div class="d-flex align-center justify-space-between flex-wrap mt-1 mb-4">
-                <VCheckbox
-                  v-model="form.remember"
-                  label="Remember me"
-                />
-
+              
+              <div class="d-flex align-center justify-space-between flex-wrap mt-5 mb-4">
+              
                 <a
-                  class="ms-2 mb-1"
-                  href="javascript:void(0)"
-                >
-                  Forgot Password?
-                </a>
+                  class="ms-5 mb-1"
+                  href="javascript:void(0)">
+                  Forgot Password 🕵️
+                  
+                </a>            
               </div>
-
+              
               <!-- login button -->
               <VBtn
                 block
+                color="black"
                 type="submit"
+                
               >
                 Login
               </VBtn>
             </VCol>
-
-            <!-- create account -->
-            <VCol
-              cols="12"
-              class="text-center text-base"
-            >
-              <span>New on our platform?</span>
-              <RouterLink
-                class="text-primary ms-2"
-                to="/register"
-              >
-                Create an account
-              </RouterLink>
+            <VCol>
             </VCol>
-
-            <VCol
-              cols="12"
-              class="d-flex align-center"
-            >
-              <VDivider />
-              <span class="mx-4">or</span>
-              <VDivider />
-            </VCol>
-
-            <!-- auth providers -->
-            <VCol
-              cols="12"
-              class="text-center"
-            >
-              <AuthProvider @provider="onProviderClick" />
+            <VCol>
+            </VCol>          
+            <VCol>
             </VCol>
           </VRow>
         </VForm>
       </VCardText>
     </VCard>
-
-    <VImg
-      class="auth-footer-start-tree d-none d-md-block"
-      :src="authV1Tree"
-      :width="250"
-    />
-
-    <VImg
-      :src="authV1Tree2"
-      class="auth-footer-end-tree d-none d-md-block"
-      :width="350"
-    />
-
-    <!-- bg img -->
-    <VImg
-      class="auth-footer-mask d-none d-md-block"
-      :src="authThemeMask"
-    />
   </div>
 </template>
 
