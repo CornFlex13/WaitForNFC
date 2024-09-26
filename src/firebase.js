@@ -48,4 +48,3 @@ const call = async(functionName, params) => {
 }
 
 export { app, auth, call, db, functions, storage }
-

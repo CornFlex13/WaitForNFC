@@ -1,29 +1,13 @@
 export const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/courses' },
 
   {
     path: '/',
     component: () => import('@/layouts/default.vue'),
     children: [
       {
-        path: 'tables',
-        component: () => import('@/pages/tables.vue'),
-      },
-      {
-        path: 'student',
-        component: () => import('@/pages/student.vue'),
-      },
-      {
-        path: 'stock',
-        component: () => import('@/pages/stock.vue'),
-      },
-      {
         path: 'expend',
         component: () => import('@/pages/expend.vue'),
-      },
-      {
-        path: 'transaction',
-        component: () => import('@/pages/transaction.vue'),
       },
       {
         path: 'users',
@@ -34,7 +18,7 @@ export const routes = [
         component: () => import('@/pages/setting.vue'),
       },      
       {
-        path: 'home',
+        path: 'courses',
         component: () => import('@/pages/home.vue'),
       },
       {
@@ -46,26 +30,30 @@ export const routes = [
         component: () => import('@/pages/cp422021.vue'),
       },
       {
-        path: 'attendancecheck',
-        component: () => import('@/pages/attendancecheck.vue'),
+        path: 'cp422021_atd_check',
+        component: () => import('@/pages/cp422021_atd_check.vue'),
       },
       {
-        path: 'attendancecheck/:courseid',
-        component: () => import('@/pages/attendancecheck.vue'),
+        path: 'cp422021_atd_check/:courseid',
+        component: () => import('@/pages/cp422021_atd_check.vue'),
       },
       {
-        path: 'home_std',
-        component: () => import('@/pages/home_std.vue'),
+        path: 'cp422021_atd_check/:periodId/realtimecheck',
+        component: () => import('@/pages/RealtimeCheckCP422021.vue'),
+      },
+
+      {
+        path: 'cp422101_atd_check',
+        component: () => import('@/pages/cp422101.vue'),
       },
       {
-        path: 'cp422021std',
-        component: () => import('@/pages/cp422021std.vue'),
+        path: 'cp422101_atd_check/:courseid',
+        component: () => import('@/pages/cp422101_atd_check.vue'),
       },
       {
-        path: 'cp422101std',
-        component: () => import('@/pages/cp422101std.vue'),
-      },
-            
+        path: 'cp422101_atd_check/:periodId/realtimecheck',
+        component: () => import('@/pages/RealtimeCheckCP422101.vue'),
+      },     
     ],
   },
   {
