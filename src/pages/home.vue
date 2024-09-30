@@ -62,7 +62,7 @@ export default {
   methods: {
     async fetchCourses() {
       // ดึงข้อมูลจาก Firestore
-      const querySnapshot = await getDocs(collection(db, 'Classrooms'));
+      const querySnapshot = await getDocs(collection(db, 'Classrooms')); // แก้ฟังก์ชันgetdoc
       const coursesArray = [];
       querySnapshot.forEach((doc) => {
         coursesArray.push({ id: doc.id, ...doc.data() });

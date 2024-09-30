@@ -38,7 +38,7 @@ const fetchStudents = async () => {
 
     students.value = querySnapshot.docs
       .map(doc => ({ id: doc.id, ...doc.data() }))
-      .filter(student => student.status !== "") // กรองเฉพาะที่ status ไม่ใช่ค่าว่าง
+      .filter(student => student.status === "In time" ) // กรองเฉพาะที่ status Intime
       .sort((a, b) => (a.section === b.section ? a.stdid.localeCompare(b.stdid) : a.section.localeCompare(b.section)));
   } catch (error) {
     console.error('Error fetching students: ', error);
@@ -112,7 +112,7 @@ onMounted(() => {
 
 <template>
   <div style="display: flex; align-items: center;">
-    <h3 style="font-size: 37px; margin-inline-end: 10px;">Attendance Check <br /></h3>
+    <h3 style="font-size: 37px; margin-inline-end: 10px;">Realtime Checking <br /></h3>
   </div>
 
   <br />
@@ -120,7 +120,7 @@ onMounted(() => {
     <p style="font-size: 15px; text-align: start;"></p>
     <p style="font-size: 18px; text-align: end;">
       <a href="/courses">Courses</a> /
-      <a href="/cp422101">CP422101 - Introduction to Computer Networking</a> <br />
+      <a href="/cp422101">cp422101 - Introduction to Computer Networking</a> <br />
       / Attendance Check
     </p>
   </div>
@@ -133,7 +133,6 @@ onMounted(() => {
         <span style="flex: 1; text-align: center;">Department :</span>
         <span style="flex: 1; text-align: center;">Status :</span>
         <span style="flex: 1; text-align: center">Section :</span>
-        <span style="flex: 1; text-align: start;"></span>
       </div>
 
       <div v-for="student in students" :key="student.id" style="margin-block-start: 10px;">
@@ -143,28 +142,11 @@ onMounted(() => {
               <span style="flex: 1; text-align: center;">{{ student.stdid }}</span>
               <span style="flex: 1; text-align: center;">{{ student.studentName }}</span>
               <span style="flex: 1; text-align: center;">{{ student.department }}</span>
-              <span style="flex: 1; text-align: right;">{{ student.status }}</span>
-              <span style="flex: 1; text-align: center;"></span>
-              <span style="flex: 1; text-align: left">{{ student.section }}</span>
-              <VBtn icon @click="openEditDialog(student)" color="blue" style="margin-left: auto;">
-                <v-icon>mdi-pencil</v-icon>
-              </VBtn>
-              <VBtn icon @click="confirmDeleteStudent(student.id)" color="red">
-                <v-icon>mdi-delete</v-icon>
-              </VBtn>
+              <span style="flex: 1; text-align: center;">{{ student.status }}</span>
+              <span style="flex: 1; text-align: center">{{ student.section }}</span>
             </div>
           </VCardText>
         </VCard>
-      </div>
-
-      <div style="margin-block-start: 20px; text-align: center;">
-        <VBtn color="primary" @click="dialog = true">
-          <v-icon left>mdi-plus</v-icon>
-          Add Student
-        </VBtn>
-        <VBtn color="primary" @click="$router.push(`${periodId}/realtimecheck`)">
-          Realtime checking page<v-icon right>mdi-arrow-right</v-icon>
-        </VBtn>
       </div>
     </VCardText>
   </VCard>

@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app"
-import { connectAuthEmulator, getAuth } from 'firebase/auth'
-import { connectFirestoreEmulator, getFirestore } from "firebase/firestore"
-import { connectFunctionsEmulator, getFunctions, httpsCallable } from "firebase/functions"
-import { connectStorageEmulator, getStorage } from "firebase/storage"
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from "firebase/firestore"
+import { getFunctions, httpsCallable } from "firebase/functions"
+import { getStorage } from "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPHDCyXRvubMmC7pjSqTgZ0sDlxtm1gOU",
@@ -21,16 +21,15 @@ const auth = getAuth()
 const db = getFirestore()
 const storage = getStorage(app)
 
-//const functions = getFunctions(app,"asia-southeast1")
-
+// ถ้าต้องการใช้ Functions ในภูมิภาคอื่นที่ไม่ใช่ค่าเริ่มต้น (us-central1) ให้ระบุภูมิภาค
+// const functions = getFunctions(app, "asia-southeast1")
 const functions = getFunctions(app)
 
-if (true) {
-  connectAuthEmulator(auth, "http://localhost:9099", { disableWarnings: true })
-  connectFirestoreEmulator(db, 'localhost', 8080)
-  connectFunctionsEmulator(functions, "localhost", 5001)
-  connectStorageEmulator(storage, "localhost", 9199)
-}
+// ถ้าไม่ต้องการเชื่อมต่อกับ Emulator ไม่ต้องใช้บรรทัดเหล่านี้
+// connectAuthEmulator(auth, "http://localhost:9099", { disableWarnings: true })
+// connectFirestoreEmulator(db, 'localhost', 8080)
+// connectFunctionsEmulator(functions, "localhost", 5001)
+// connectStorageEmulator(storage, "localhost", 9199)
 
 const call = async(functionName, params) => {
   try {
@@ -41,7 +40,6 @@ const call = async(functionName, params) => {
     } else if(res.data.success === false) {
       console.log(res.data.reason)
     }
-    
   } catch (err) {
     console.log(err)
   }

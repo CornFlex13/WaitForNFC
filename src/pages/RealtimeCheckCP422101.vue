@@ -120,7 +120,7 @@ onMounted(() => {
     <p style="font-size: 15px; text-align: start;"></p>
     <p style="font-size: 18px; text-align: end;">
       <a href="/courses">Courses</a> /
-      <a href="/cp422101">CP422101 - Introduction to Computer Networking</a> <br />
+      <a href="/cp422101">cp422101 - Introduction to Computer Networking</a> <br />
       / Attendance Check
     </p>
   </div>
